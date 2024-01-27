@@ -12,6 +12,27 @@ x = 0
 y = 0
 z = 0.5
 
-pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
-pyrosim.Send_Cube(name="Box2", pos=[x + 1,y + 1,z + 1] , size=[length, width, height])
+# shrinking variable
+shrink = .9
+
+# x direction
+for j in range(5):
+
+    # y direction
+    for k in range (5):
+
+        # create one tower
+        for i in range (10):
+            pyrosim.Send_Cube(name="Box" + str(i), pos=[x + k,y + j,z + i] , size=[length, width, height])
+
+            #update sizes
+            length = length * shrink
+            width = width * shrink
+            height = height * shrink
+        
+        # reset sizes
+        length = 1
+        width = 1
+        height = 1
+
 pyrosim.End()
