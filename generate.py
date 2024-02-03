@@ -84,7 +84,50 @@ def CreateRobot():
 
     pyrosim.Send_Cube(name="Link3", pos=[x,y,z] , size=[length, width, height])
 
+    ###### Joint 3_4 ######
+    # joint position
+    x = 0
+    y = 1
+    z = 0
+    pyrosim.Send_Joint(name = "Link3_Link4", parent= "Link3", child = "Link4", type = "revolute", position = [x,y,z])
+                                                                                                              
+    ###### Link 4 #######
+    # box position -> now is relative
+    x = 0
+    y = 0.5
+    z = 0
 
+    pyrosim.Send_Cube(name="Link4", pos=[x,y,z] , size=[length, width, height])
+
+    ###### Joint 4_5 ######
+    # joint position
+    x = 0
+    y = 0.5
+    z = -0.5
+    pyrosim.Send_Joint(name = "Link4_Link5", parent= "Link4", child = "Link5", type = "revolute", position = [x,y,z])
+                                                                                                              
+    ###### Link 5 #######
+    # box position -> now is relative
+    x = 0
+    y = 0
+    z = -0.5
+
+    pyrosim.Send_Cube(name="Link5", pos=[x,y,z] , size=[length, width, height])
+
+    ###### Joint 5_6 ######
+    # joint position
+    x = 0
+    y = 0
+    z = -1
+    pyrosim.Send_Joint(name = "Link5_Link6", parent= "Link5", child = "Link6", type = "revolute", position = [x,y,z])
+                                                                                                              
+    ###### Link 5 #######
+    # box position -> now is relative
+    x = 0
+    y = 0
+    z = -0.5
+
+    pyrosim.Send_Cube(name="Link6", pos=[x,y,z] , size=[length, width, height])
 
     pyrosim.End()
 
