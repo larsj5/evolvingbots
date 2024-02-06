@@ -27,4 +27,4 @@ for i in range (0, 10000):
 # disconnect from environment
 p.disconnect()
 
-print(backLegSensorValues)
+numpy.save('backLegSensorValues.npy', backLegSensorValues)
