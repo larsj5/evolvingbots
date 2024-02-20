@@ -1,9 +1,9 @@
 import numpy
 
-SIMULATION_LENGTH = 1000
-TIME_STEP = 1/60
-GRAVITY = -9.8
-TWO_PI = 2 * numpy.pi
+simulation_length = 1000
+time_step = 1/60
+gravity = -9.8
+two_pi = 2 * numpy.pi
 
 # motor values
 FLamplitude = numpy.pi / 6.0
