@@ -8,9 +8,6 @@ class ROBOT:
 
     ### Constructor ###
     def __init__(self):
-
-        self.motors = {}
-
         # load and prepare to simulate the robot
         self.robotId = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
@@ -26,3 +23,8 @@ class ROBOT:
     def Sense(self, t):
         for linkName in pyrosim.linkNamesToIndices:
             self.sensors[linkName].Get_Value(t)
+
+    def Prepare_To_Act(self):
+        self.motors = {}
+        for jointName in pyrosim.jointNamesToIndices:
+            self.motors[jointName] = MOTOR(jointName)
