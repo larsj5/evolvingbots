@@ -9,17 +9,6 @@ from simulation import SIMULATION
 
 simulation = SIMULATION()
 
-# # setup environment
-# physicsClient = p.connect(p.GUI)
-# p.setAdditionalSearchPath(pybullet_data.getDataPath())
-# p.configureDebugVisualizer(p.COV_ENABLE_GUI,0) # disables debug visualizer
-
-# # setup world 
-# p.setGravity(0,0,c.GRAVITY)
-# planeId = p.loadURDF("plane.urdf")
-# robotId = p.loadURDF("body.urdf")
-# p.loadSDF("world.sdf")
-
 # # set up sensors
 # backLegSensorValues = numpy.zeros(c.simulation_length)
 # frontLegSensorValues = numpy.zeros(c.simulation_length)
