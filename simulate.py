@@ -8,6 +8,7 @@ import constants as c
 from simulation import SIMULATION
 
 simulation = SIMULATION()
+simulation.Run()
 
 # # set up sensors
 # backLegSensorValues = numpy.zeros(c.simulation_length)

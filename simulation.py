@@ -4,6 +4,7 @@ import pybullet as p
 import pybullet_data
 import constants as c
 import pyrosim.pyrosim as pyrosim
+import time
 
 
 class SIMULATION:
@@ -18,3 +19,8 @@ class SIMULATION:
         # create world and robot
         self.world = WORLD()
         self.robot = ROBOT()
+
+    def Run(self):
+        for i in range (0, c.simulation_length):
+            p.stepSimulation()
+            time.sleep(c.time_step)
