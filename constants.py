@@ -1,7 +1,7 @@
 import numpy
 
 simulation_length = 1000
-time_step = 1/60
+time_step = 1/30
 gravity = -9.8
 two_pi = 2 * numpy.pi
 
