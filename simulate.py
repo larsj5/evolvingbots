@@ -1,10 +1,3 @@
-import pybullet as p
-import pyrosim.pyrosim as pyrosim
-import time
-import pybullet_data
-import numpy
-import random
-import constants as c
 from simulation import SIMULATION
 
 simulation = SIMULATION()
@@ -21,7 +14,6 @@ simulation.Run()
 
 # # numpy.save('data/backLegMotorValues.npy', BLtargetAngles)
 # # numpy.save('data/frontLegMotorValues.npy', FLtargetAngles)
-# # exit()
 
 # for i in range (0, c.simulation_length):
 #     p.stepSimulation()
@@ -29,21 +21,6 @@ simulation.Run()
 #     #store sensor values
 #     backLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("BackLeg")
 #     frontLegSensorValues[i] = pyrosim.Get_Touch_Sensor_Value_For_Link("FrontLeg")
-
-#     # motors
-#     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
-#                                 jointName = b'Torso_BackLeg',
-#                                 controlMode = p.POSITION_CONTROL,
-#                                 targetPosition = BLtargetAngles[i],
-#                                 maxForce = c.BLforce)
-    
-#     pyrosim.Set_Motor_For_Joint(bodyIndex = robotId, 
-#                                 jointName = b'Torso_FrontLeg',
-#                                 controlMode = p.POSITION_CONTROL,
-#                                 targetPosition = FLtargetAngles[i],
-#                                 maxForce = c.FLforce)
-    
-#     time.sleep(c.time_step)
 
 # # disconnect from environment
 # p.disconnect()
