@@ -16,8 +16,6 @@ class SOLUTION:
         f = open("fitness.txt", 'r')
         self.fitness = float(f.readline())
         f.close
-        print(self.fitness)
-
 
     def Create_World(self):
 

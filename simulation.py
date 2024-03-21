@@ -11,7 +11,7 @@ class SIMULATION:
     ### Constructor ###
     def __init__(self):
         # setup environment
-        self.physicsClient = p.connect(p.GUI)
+        self.physicsClient = p.connect(p.DIRECT)
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.configureDebugVisualizer(p.COV_ENABLE_GUI,0) # disables debug visualizer
         p.setGravity(0,0,c.gravity)
