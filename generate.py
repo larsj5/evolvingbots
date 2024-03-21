@@ -1,7 +1,7 @@
 import pyrosim.pyrosim as pyrosim
 import random
 
-def CreateWorld():
+def Create_World():
 
     pyrosim.Start_SDF("world.sdf")
 
@@ -20,7 +20,7 @@ def CreateWorld():
     pyrosim.End()
 
 
-def Generate_Body():
+def Create_Body():
     pyrosim.Start_URDF("body.urdf")
 
     # Only the first link in a robot --- the "root" link --- has an absolute position.
@@ -71,7 +71,7 @@ def Generate_Body():
     pyrosim.End()
 
 
-def Generate_Brain():
+def Create_Brain():
 
     pyrosim.Start_NeuralNetwork("brain.nndf")
 
@@ -91,6 +91,3 @@ def Generate_Brain():
 
 
     pyrosim.End()
-
-Generate_Body()
-Generate_Brain()
