@@ -32,3 +32,6 @@ class SIMULATION:
             self.robot.Think(i)
             self.robot.Act(i)
             time.sleep(c.time_step)
+
+    def Get_Fitness(self):
+        self.robot.Get_Fitness()
