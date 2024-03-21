@@ -13,6 +13,11 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         os.system("python3 simulate.py")
+        f = open("fitness.txt", 'r')
+        self.fitness = float(f.readline())
+        f.close
+        print(self.fitness)
+
 
     def Create_World(self):
 
@@ -103,3 +108,8 @@ class SOLUTION:
 
 
         pyrosim.End()
+
+    def Mutate(self):
+        row = random.randint(0, 2)
+        col = random.randint(0, 1)
+        self.weights[row][col] = (random.random() * 2) - 1
