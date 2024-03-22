@@ -13,4 +13,4 @@ phaseOffset = numpy.pi / 2.0
 BLforce = 20
 FLforce = 20
 
-numberOfGenerations = 10
+numberOfGenerations = 20

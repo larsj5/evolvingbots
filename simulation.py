@@ -9,9 +9,13 @@ import time
 
 class SIMULATION:
     ### Constructor ###
-    def __init__(self):
+    def __init__(self, directOrGUI):
         # setup environment
-        self.physicsClient = p.connect(p.DIRECT)
+        if directOrGUI == "DIRECT":
+            self.physicsClient = p.connect(p.DIRECT)
+        else:
+            self.physicsClient = p.connect(p.GUI)
+        
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         p.configureDebugVisualizer(p.COV_ENABLE_GUI,0) # disables debug visualizer
         p.setGravity(0,0,c.gravity)
