@@ -9,7 +9,7 @@ import time
 
 class SIMULATION:
     ### Constructor ###
-    def __init__(self, directOrGUI):
+    def __init__(self, directOrGUI, solutionID):
         # setup environment
         self.directOrGUI = directOrGUI
         if directOrGUI == "DIRECT":
@@ -23,7 +23,7 @@ class SIMULATION:
 
         # create world and robot
         self.world = WORLD()
-        self.robot = ROBOT()
+        self.robot = ROBOT(solutionID)
 
     ### Destructor ###
     def __del__(self):
