@@ -24,7 +24,7 @@ class SOLUTION:
             time.sleep(0.01)
         f = open(filename, 'r')
         self.fitness = float(f.readline())
-        f.close
+        f.close()
         os.system("rm " + filename)
 
     def Create_World(self):
