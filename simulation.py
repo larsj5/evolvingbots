@@ -11,6 +11,7 @@ class SIMULATION:
     ### Constructor ###
     def __init__(self, directOrGUI):
         # setup environment
+        self.directOrGUI = directOrGUI
         if directOrGUI == "DIRECT":
             self.physicsClient = p.connect(p.DIRECT)
         else:
@@ -35,7 +36,8 @@ class SIMULATION:
             self.robot.Sense(i)
             self.robot.Think(i)
             self.robot.Act(i)
-            time.sleep(c.time_step)
+            if self.directOrGUI == "GUI":
+                time.sleep(c.time_step)
 
     def Get_Fitness(self):
         self.robot.Get_Fitness()
