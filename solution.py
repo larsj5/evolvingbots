@@ -2,6 +2,7 @@ import numpy
 import pyrosim.pyrosim as pyrosim
 import random
 import os
+import time
 
 class SOLUTION:
     def __init__(self, ID):
@@ -9,14 +10,22 @@ class SOLUTION:
         self.weights = (self.weights * 2) - 1
         self.myID = ID
 
-    def Evaluate(self, directOrGUI):
+    def Start_Simulation(self, directOrGUI):
+        # setup
         self.Create_World()
         self.Create_Body()
         self.Create_Brain()
+        # run
         os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " &")
-        f = open("fitness.txt", 'r')
+
+    def Wait_For_Simulation_To_End(self):
+        filename = "fitness" + str(self.myID) + ".txt"
+        while not os.path.exists(filename):
+            time.sleep(0.01)
+        f = open(filename, 'r')
         self.fitness = float(f.readline())
         f.close
+        os.system("rm " + filename)
 
     def Create_World(self):
 

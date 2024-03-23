@@ -14,6 +14,7 @@ class ROBOT:
         self.robotId = p.loadURDF("body.urdf")
         pyrosim.Prepare_To_Simulate(self.robotId)
 
+        self.solutionID = solutionID
         self.nn = NEURAL_NETWORK("brain" + str(solutionID) + ".nndf")
 
         self.Prepare_To_Sense()
@@ -51,7 +52,11 @@ class ROBOT:
         stateOfLinkZero = p.getLinkState(self.robotId, 0)
         positionOfLinkZero = stateOfLinkZero[0]
         xCoordinateOfLinkZero = positionOfLinkZero[0]
-        f = open("fitness.txt", 'w')
+        filename = "tmp" + str(self.solutionID) + ".txt"
+        f = open(filename, 'w')
         f.write(str(xCoordinateOfLinkZero))
         f.close()
+
+        os.system("mv tmp" + self.solutionID + ".txt fitness" + self.solutionID + ".txt")
+
         

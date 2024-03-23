@@ -12,7 +12,12 @@ class PARALLEL_HILL_CLIMBER:
 
     def Evolve(self):
         for i in self.parents:
-            self.parents[i].Evaluate("GUI")
+            self.parents[i].Start_Simulation("DIRECT")
+
+        for i in self.parents:
+            self.parents[i].Wait_For_Simulation_To_End()
+            print(self.parents[i].fitness)
+        
         # for currentGeneration in range(c.numberOfGenerations):
         #     self.Evolve_For_One_Generation()
 
