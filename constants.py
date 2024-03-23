@@ -14,4 +14,4 @@ BLforce = 20
 FLforce = 20
 
 numberOfGenerations = 20
-populationSize = 10
+populationSize = 2
