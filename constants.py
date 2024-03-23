@@ -1,6 +1,6 @@
 import numpy
 
-simulation_length = 100
+simulation_length = 1000
 time_step = 1/30
 gravity = -9.8
 two_pi = 2 * numpy.pi
@@ -13,5 +13,5 @@ phaseOffset = numpy.pi / 2.0
 BLforce = 20
 FLforce = 20
 
-numberOfGenerations = 20
-populationSize = 2
+numberOfGenerations = 10
+populationSize = 10
