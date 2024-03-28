@@ -69,16 +69,21 @@ class SOLUTION:
         # Every other joint has a position relative to its upstream joint
         ###### Joint 0_1 ######
         # joint position
-        x = 1
-        y = 0
+        x = 0
+        y = -0.5
         z = 1
         pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso", child = "BackLeg", type = "revolute", position = [x,y,z])
                                                                                                                 
         ###### Link 1 #######
+
+        length = 0.2
+        width = 1
+        height = 0.2
+
         # box position -> now is relative
-        x = -0.5
-        y = 0
-        z = -0.5
+        x = 0
+        y = -0.5
+        z = 0
         pyrosim.Send_Cube(name="BackLeg", pos=[x,y,z] , size=[length, width, height])
 
         ###### Joint 1_2 ######
@@ -94,10 +99,6 @@ class SOLUTION:
         y = 0.5
         z = 0
 
-        length = 0.2
-        width = 1
-        height = 0.2
-        
         pyrosim.Send_Cube(name="FrontLeg", pos=[x,y,z] , size=[length, width, height])
 
         pyrosim.End()
