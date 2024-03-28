@@ -16,7 +16,7 @@ class SOLUTION:
         self.Create_Body()
         self.Create_Brain()
         # run
-        os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " &")
+        os.system("python3 simulate.py " + directOrGUI + " " + str(self.myID) + " 2&>1 &")
 
     def Wait_For_Simulation_To_End(self):
         filename = "fitness" + str(self.myID) + ".txt"
