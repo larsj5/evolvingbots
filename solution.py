@@ -32,17 +32,7 @@ class SOLUTION:
 
         pyrosim.Start_SDF("world.sdf")
 
-        # box sizes
-        length = 1
-        width = 1
-        height = 1
-
-        # box position
-        x = 4
-        y = 4
-        z = 0.5
-
-        pyrosim.Send_Cube(name="Box", pos=[x,y,z] , size=[length, width, height])
+        pyrosim.Send_Cube(name="Box", pos=[1,1,1] , size=[4, 4, 0.5])
 
         pyrosim.End()
 
@@ -59,95 +49,41 @@ class SOLUTION:
         # ---------------------------------------# 
 
         # ------------- TORSO ----------------# 
-        # box sizes and positions
-        length = 1
-        width = 1
-        height = 1
-
-        x = 0
-        y = 0
-        z = 1
-
-        pyrosim.Send_Cube(name="Torso", pos=[x,y,z] , size=[length, width, height])
+        pyrosim.Send_Cube(name="Torso", pos=[0,0,1] , size=[1, 1, 1])
         # ------------ END TORSO --------------# 
 
 
         # ------------- BACK LEG ----------------# 
-        # joint position
-        x = 0
-        y = -0.5
-        z = 1
+        pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso", child = "BackLeg", type = "revolute", position = [0,-0.5,1], jointAxis="1 0 0")
+        pyrosim.Send_Cube(name="BackLeg", pos=[0,-0.5,0] , size=[0.2, 1, 0.2])
 
-        pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso", child = "BackLeg", type = "revolute", position = [x,y,z], jointAxis="1 0 0")
-
-        # update link sizes
-        length = 0.2
-        width = 1
-        height = 0.2
-
-        # box position [relative]
-        x = 0
-        y = -0.5
-        z = 0
-
-        pyrosim.Send_Cube(name="BackLeg", pos=[x,y,z] , size=[length, width, height])
+        # joint position is relative to back leg        
+        pyrosim.Send_Joint(name = "BackLeg_BackLowerLeg", parent= "BackLeg", child = "BackLowerLeg", type = "revolute", position = [0,-1,0], jointAxis="1 0 0")                                                                                             
+        pyrosim.Send_Cube(name="BackLowerLeg", pos=[0,0,-0.5] , size=[0.2, 0.2, 1])
         # ------------- END BACK LEG ----------------# 
 
         
         # ------------- FRONT LEG ----------------# 
-        # joint position
-        x = 0
-        y = 0.5
-        z = 1
-        
-        pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso", child = "FrontLeg", type = "revolute", position = [x,y,z], jointAxis="1 0 0")
-                                                                                                                
-        # box position [relative]
-        x = 0
-        y = 0.5
-        z = 0
+        pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso", child = "FrontLeg", type = "revolute", position = [0,0.5,1], jointAxis="1 0 0")
+        pyrosim.Send_Cube(name="FrontLeg", pos=[0,0.5,0] , size=[0.2, 1, 0.2])
 
-        pyrosim.Send_Cube(name="FrontLeg", pos=[x,y,z] , size=[length, width, height])
+        # joint position [relative to front leg]
+        pyrosim.Send_Joint(name = "FrontLeg_FrontLowerLeg", parent= "FrontLeg", child = "FrontLowerLeg", type = "revolute", position = [1,1,0], jointAxis="1 0 0")
+        pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0,0,-0.5] , size=[0.2, 0.2, 1])
         # ------------- END FRONT LEG ----------------# 
 
 
         # ------------- LEFT LEG ----------------# 
-        # joint position
-        x = -0.5
-        y = 0
-        z = 1
-
-        pyrosim.Send_Joint(name = "Torso_LeftLeg", parent= "Torso", child = "LeftLeg", type = "revolute", position = [x,y,z], jointAxis="0 1 0")
-
-        # update link sizes
-        length = 1
-        width = 0.2
-        height = 0.2
-
-        # box position [relative]
-        x = -0.5
-        y = 0
-        z = 0
-
-        pyrosim.Send_Cube(name="LeftLeg", pos=[x,y,z] , size=[length, width, height])
+        pyrosim.Send_Joint(name = "Torso_LeftLeg", parent= "Torso", child = "LeftLeg", type = "revolute", position = [-0.5,0,1], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="LeftLeg", pos=[-0.5,0,0] , size=[1, 0.2, 0.2])
         # ------------- END LEFT LEG ----------------# 
 
 
         # ------------- RIGHT LEG ----------------# 
-        # joint position
-        x = 0.5
-        y = 0
-        z = 1
-
-        pyrosim.Send_Joint(name = "Torso_RightLeg", parent= "Torso", child = "RightLeg", type = "revolute", position = [x,y,z], jointAxis="0 1 0")
-
-        # box position [relative]
-        x = 0.5
-        y = 0
-        z = 0
-
-        pyrosim.Send_Cube(name="RightLeg", pos=[x,y,z] , size=[length, width, height])
+        pyrosim.Send_Joint(name = "Torso_RightLeg", parent= "Torso", child = "RightLeg", type = "revolute", position = [0.5,0,1], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="RightLeg", pos=[0.5,0,0] , size=[1, 0.2, 0.2])
         # ------------- END RIGHT LEG ----------------# 
+
         pyrosim.End()
 
 
@@ -155,17 +91,27 @@ class SOLUTION:
 
         pyrosim.Start_NeuralNetwork("brain" + str(self.myID) + ".nndf")
 
+        # --------------- Sensor Neurons ------------------#
         pyrosim.Send_Sensor_Neuron(name = 0 , linkName = "Torso")
         pyrosim.Send_Sensor_Neuron(name = 1 , linkName = "BackLeg")
         pyrosim.Send_Sensor_Neuron(name = 2 , linkName = "FrontLeg")
         pyrosim.Send_Sensor_Neuron(name = 3 , linkName = "LeftLeg")
         pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "RightLeg")
 
+        pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "FrontLowerLeg")
 
+
+        # --------------- Motor Neurons ------------------#
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 0 , jointName = "Torso_BackLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 1 , jointName = "Torso_FrontLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 2 , jointName = "Torso_LeftLeg")
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 3 , jointName = "Torso_RightLeg")
+
+        pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 4 , jointName = "FrontLeg_FrontLowerLeg")
+
+
+
+
 
         # iterate over the sensor neurons
         for currentRow in range (c.numSensorNeurons):
