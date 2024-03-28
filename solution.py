@@ -72,7 +72,7 @@ class SOLUTION:
         x = 0
         y = -0.5
         z = 1
-        pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso", child = "BackLeg", type = "revolute", position = [x,y,z])
+        pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso", child = "BackLeg", type = "revolute", position = [x,y,z], jointAxis="1 0 0")
                                                                                                                 
         ###### Link 1 #######
 
@@ -91,7 +91,7 @@ class SOLUTION:
         x = 0
         y = 0.5
         z = 1
-        pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso", child = "FrontLeg", type = "revolute", position = [x,y,z])
+        pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso", child = "FrontLeg", type = "revolute", position = [x,y,z], jointAxis="1 0 0")
                                                                                                                 
         ###### Link 2 #######
         # box position -> now is relative
