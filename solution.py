@@ -32,7 +32,7 @@ class SOLUTION:
 
         pyrosim.Start_SDF("world.sdf")
 
-        pyrosim.Send_Cube(name="Box", pos=[1,1,1] , size=[4, 4, 0.5])
+        pyrosim.Send_Cube(name="Box", pos=[4,4,0.5] , size=[1, 1, 1])
 
         pyrosim.End()
 
@@ -56,8 +56,7 @@ class SOLUTION:
         # ------------- BACK LEG ----------------# 
         pyrosim.Send_Joint(name = "Torso_BackLeg", parent= "Torso", child = "BackLeg", type = "revolute", position = [0,-0.5,1], jointAxis="1 0 0")
         pyrosim.Send_Cube(name="BackLeg", pos=[0,-0.5,0] , size=[0.2, 1, 0.2])
-
-        # joint position is relative to back leg        
+       
         pyrosim.Send_Joint(name = "BackLeg_BackLowerLeg", parent= "BackLeg", child = "BackLowerLeg", type = "revolute", position = [0,-1,0], jointAxis="1 0 0")                                                                                             
         pyrosim.Send_Cube(name="BackLowerLeg", pos=[0,0,-0.5] , size=[0.2, 0.2, 1])
         # ------------- END BACK LEG ----------------# 
@@ -67,8 +66,7 @@ class SOLUTION:
         pyrosim.Send_Joint(name = "Torso_FrontLeg", parent= "Torso", child = "FrontLeg", type = "revolute", position = [0,0.5,1], jointAxis="1 0 0")
         pyrosim.Send_Cube(name="FrontLeg", pos=[0,0.5,0] , size=[0.2, 1, 0.2])
 
-        # joint position [relative to front leg]
-        pyrosim.Send_Joint(name = "FrontLeg_FrontLowerLeg", parent= "FrontLeg", child = "FrontLowerLeg", type = "revolute", position = [1,1,0], jointAxis="1 0 0")
+        pyrosim.Send_Joint(name = "FrontLeg_FrontLowerLeg", parent= "FrontLeg", child = "FrontLowerLeg", type = "revolute", position = [0,1,0], jointAxis="1 0 0")
         pyrosim.Send_Cube(name="FrontLowerLeg", pos=[0,0,-0.5] , size=[0.2, 0.2, 1])
         # ------------- END FRONT LEG ----------------# 
 
@@ -76,12 +74,18 @@ class SOLUTION:
         # ------------- LEFT LEG ----------------# 
         pyrosim.Send_Joint(name = "Torso_LeftLeg", parent= "Torso", child = "LeftLeg", type = "revolute", position = [-0.5,0,1], jointAxis="0 1 0")
         pyrosim.Send_Cube(name="LeftLeg", pos=[-0.5,0,0] , size=[1, 0.2, 0.2])
+
+        pyrosim.Send_Joint(name = "LeftLeg_LeftLowerLeg", parent= "LeftLeg", child = "LeftLowerLeg", type = "revolute", position = [-1,0,0], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="LeftLowerLeg", pos=[0,0,-0.5] , size=[0.2, 0.2, 1])
         # ------------- END LEFT LEG ----------------# 
 
 
         # ------------- RIGHT LEG ----------------# 
         pyrosim.Send_Joint(name = "Torso_RightLeg", parent= "Torso", child = "RightLeg", type = "revolute", position = [0.5,0,1], jointAxis="0 1 0")
         pyrosim.Send_Cube(name="RightLeg", pos=[0.5,0,0] , size=[1, 0.2, 0.2])
+
+        pyrosim.Send_Joint(name = "RightLeg_RightLowerLeg", parent= "RightLeg", child = "RightLowerLeg", type = "revolute", position = [1,0,0], jointAxis="0 1 0")
+        pyrosim.Send_Cube(name="RightLowerLeg", pos=[0,0,-0.5] , size=[0.2, 0.2, 1])
         # ------------- END RIGHT LEG ----------------# 
 
         pyrosim.End()
@@ -99,6 +103,10 @@ class SOLUTION:
         pyrosim.Send_Sensor_Neuron(name = 4 , linkName = "RightLeg")
 
         pyrosim.Send_Sensor_Neuron(name = 5 , linkName = "FrontLowerLeg")
+        pyrosim.Send_Sensor_Neuron(name = 6 , linkName = "BackLowerLeg")
+        pyrosim.Send_Sensor_Neuron(name = 7 , linkName = "LeftLowerLeg")
+        pyrosim.Send_Sensor_Neuron(name = 8 , linkName = "RightLowerLeg")
+
 
 
         # --------------- Motor Neurons ------------------#
@@ -108,6 +116,10 @@ class SOLUTION:
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 3 , jointName = "Torso_RightLeg")
 
         pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 4 , jointName = "FrontLeg_FrontLowerLeg")
+        pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 5 , jointName = "BackLeg_BackLowerLeg")
+        pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 6 , jointName = "LeftLeg_LeftLowerLeg")
+        pyrosim.Send_Motor_Neuron( name = c.numSensorNeurons + 7 , jointName = "RightLeg_RightLowerLeg")
+
 
 
 
