@@ -13,8 +13,10 @@ phaseOffset = numpy.pi / 2.0
 BLforce = 20
 FLforce = 20
 
-numberOfGenerations = 1
-populationSize = 1
+motorJointRange = 0.2
 
-numSensorNeurons = 9
+numberOfGenerations = 20
+populationSize = 20
+
+numSensorNeurons = 4
 numMotorNeurons = 8
